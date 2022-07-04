@@ -1,8 +1,6 @@
-import com.company.IncorrectException;
-
 import java.io.*;
 
-public class Data {
+public class DataProccesing {
 
     /**
      * @param login    - written by user;
@@ -36,7 +34,7 @@ public class Data {
                 String emailResult = line.substring(0, i);
                 int result = emailResult.compareTo(login);
                 if (result == 0) {
-                    throw new IncorrectException("This user already exists");
+                    throw new UserIncorrectException("This user already exists");
                 }
             }
         } catch (IOException e) {
@@ -63,7 +61,7 @@ public class Data {
                 }
             }
             if (numbers == 0) {
-                throw new IncorrectException("This user doesn't exist");
+                throw new UserIncorrectException("This user doesn't exist");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

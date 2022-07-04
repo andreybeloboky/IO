@@ -1,5 +1,3 @@
-import com.company.IncorrectException;
-
 import java.util.Scanner;
 
 public class Main {
@@ -17,9 +15,9 @@ public class Main {
             if (checkEmail) {
                 System.out.println("Enter your password: ");
                 password = scanner.next();
-                boolean isUser = Data.isUserValidationMatch(login);
+                boolean isUser = DataProccesing.isUserValidationMatch(login);
                 if (isUser) {
-                    Data.dataSaving(login, password);
+                    DataProccesing.dataSaving(login, password);
                     System.out.println("Congrats.You are registered");
                 }
             }
@@ -29,12 +27,12 @@ public class Main {
                 login = scanner.next();
                 System.out.println("Enter your password: ");
                 password = scanner.next();
-                boolean isUser = Data.isUserExist(login, password);
+                boolean isUser = DataProccesing.isUserExist(login, password);
                 if (isUser) {
                     System.out.println("Congrats. You logged in as " + login);
                 }
             } else {
-                throw new IncorrectException("Incorrect input. You can use only Y or N");
+                throw new UserIncorrectException("Incorrect input. You can use only Y or N");
             }
         }
         System.out.println("Would you like to buy?");
@@ -55,7 +53,7 @@ public class Main {
                     System.out.println("Input color");
                     String color = scanner.next();
                     WashingMachine machine = new WashingMachine(0, name, age, price, color);
-                    Data.writeMachine(machine);
+                    DataProccesing.writeMachine(machine);
                     System.out.println("Do you want to repeat? 1 - yes, any other number - no");
                     switchNumber = scanner.nextInt();
                 }
@@ -78,7 +76,7 @@ public class Main {
                             String newName = scanner.next();
                             DataSavingFunctionOfUser.update(needID,newName);
                         } else {
-                            throw new IncorrectException("You can choose only 1 - 3 various");
+                            throw new UserIncorrectException("You can choose only 1 - 3 various");
                         }
                     }
                 }
