@@ -1,10 +1,10 @@
 public class User {
 
-    String email;
-    String password;
+    private String email;
+    private String password;
 
     /**
-     * @param email which user's inputs;
+     * @param email    which user's inputs;
      * @param password which user's inputs;
      */
     public User(String email, String password) {

@@ -1,10 +1,14 @@
+import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public class ConsoleController {
+    private static UserService serviceUser = new UserService();
+    private static WashingMachineService serviceMachine = new WashingMachineService();
+
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        String login = null;
-        String password = null;
+        String login;
+        String password;
         System.out.println("Are you a new user? Y - yes, N - no");
         char value = scanner.next().charAt(0);
         if (value == 'Y') {
@@ -15,9 +19,11 @@ public class Main {
             if (checkEmail) {
                 System.out.println("Enter your password: ");
                 password = scanner.next();
-                boolean isUser = DataProccesing.isUserValidationMatch(login);
+                // isUserValidationMatch
+                boolean isUser = serviceUser.isUserValidationMatch(login);
                 if (isUser) {
-                    DataProccesing.dataSaving(login, password);
+                    // dataSaving
+                    serviceUser.dataSaving(login, password);
                     System.out.println("Congrats.You are registered");
                 }
             }
@@ -27,7 +33,8 @@ public class Main {
                 login = scanner.next();
                 System.out.println("Enter your password: ");
                 password = scanner.next();
-                boolean isUser = DataProccesing.isUserExist(login, password);
+                // isUserExist
+                boolean isUser = serviceUser.isUserExist(login, password);
                 if (isUser) {
                     System.out.println("Congrats. You logged in as " + login);
                 }
@@ -53,7 +60,7 @@ public class Main {
                     System.out.println("Input color");
                     String color = scanner.next();
                     WashingMachine machine = new WashingMachine(0, name, age, price, color);
-                    DataProccesing.writeMachine(machine);
+                    serviceMachine.writeMachine(machine);
                     System.out.println("Do you want to repeat? 1 - yes, any other number - no");
                     switchNumber = scanner.nextInt();
                 }
@@ -61,12 +68,14 @@ public class Main {
                 if (various == 2) {
                     System.out.println("Input ID which you need to delete");
                     String needID = scanner.next();
-                    DataSavingFunctionOfUser.delete(needID);
+                    // delete
+                    serviceMachine.delete(needID);
                 } else {
                     if (various == 3) {
                         System.out.println("Enter the ID who you need to");
                         String needID = scanner.next();
-                        String value1 = DataSavingFunctionOfUser.getOnID(needID);
+                        // getOnID
+                        String value1 = serviceMachine.getOnID(needID);
                         System.out.println(value1);
                     } else {
                         if (various == 4) {
@@ -74,7 +83,8 @@ public class Main {
                             String needID = scanner.next();
                             System.out.println("What name do you want to change to");
                             String newName = scanner.next();
-                            DataSavingFunctionOfUser.update(needID,newName);
+                            // update
+                            serviceMachine.update(needID, newName);
                         } else {
                             throw new UserIncorrectException("You can choose only 1 - 3 various");
                         }

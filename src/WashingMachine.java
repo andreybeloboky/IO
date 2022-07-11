@@ -1,23 +1,23 @@
 public class WashingMachine {
-    String color;
-    int dataOfCreate;
-    String creator;
-    int price;
-    int ID;
+    private String color;
+    private int dataOfCreate;
+    private String creator;
+    private int price;
+    private int id;
 
     /**
-     * @param color of machine (user's inputs);
+     * @param color        of machine (user's inputs);
      * @param dataOfCreate of machine (user's inputs);
-     * @param creator of machine (user's inputs);
-     * @param price of machine (user's inputs);
-     * @param ID begins with 1 index.
+     * @param creator      of machine (user's inputs);
+     * @param price        of machine (user's inputs);
+     * @param id           begins with 1 index.
      */
-    public WashingMachine(int ID, String creator, int dataOfCreate, int price, String color) {
+    public WashingMachine(int id, String creator, int dataOfCreate, int price, String color) {
         this.color = color;
         this.dataOfCreate = dataOfCreate;
         this.creator = creator;
         this.price = price;
-        this.ID = ID;
+        this.id = id;
     }
 
     public String getColor() {
@@ -36,7 +36,27 @@ public class WashingMachine {
         return price;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setDataOfCreate(int dataOfCreate) {
+        this.dataOfCreate = dataOfCreate;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
