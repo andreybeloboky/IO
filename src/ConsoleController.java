@@ -1,5 +1,9 @@
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalTime;
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class ConsoleController {
     private static UserService serviceUser = new UserService();
@@ -9,6 +13,7 @@ public class ConsoleController {
         Scanner scanner = new Scanner(System.in);
         String login;
         String password;
+        FileInputStream fa = new FileInputStream("data_users.csv");
         System.out.println("Are you a new user? Y - yes, N - no");
         char value = scanner.next().charAt(0);
         if (value == 'Y') {

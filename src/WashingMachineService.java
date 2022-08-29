@@ -40,7 +40,7 @@ public class WashingMachineService {
         ArrayList<String> string = new ArrayList<>();
         String line;
         int compare;
-        BufferedReader read = machine.workWithFileRead(); // why is that?
+        BufferedReader read = machine.workWithFileRead();
         while ((line = read.readLine()) != null) {
             String[] findID = line.split(";");
             compare = findID[0].compareTo(needID);
